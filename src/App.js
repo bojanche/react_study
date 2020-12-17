@@ -6,11 +6,15 @@ import UserOutput from './UserOutput/UserOutput';
 
 class App extends Component {
   state = {
-    username: ['Bojan_che', 'Una_Shef']
-  }
-  keyInputChangedHandler = () => {
+    username: 'Bojan_che'
+  };
 
-  }
+  keyInputChangedHandler = (event) => {
+    this.setState({
+      username: event.target.value
+    })
+  };
+
   render() {
     return (
       <div className="App">
@@ -26,9 +30,9 @@ class App extends Component {
           <li>Add two-way-binding to your input (in UserInput) to also display the starting username</li>
           <li>Add styling of your choice to your components/ elements in the components - both with inline styles and stylesheets</li>
         </ol>
-        <UserInput />
-        <UserOutput user_name={this.state.username[0]} />
-        <UserOutput user_name={this.state.username[1]} />
+        <UserInput changed={this.keyInputChangedHandler} current_name={this.state.username} />
+        <UserOutput user_name={this.state.username} />
+        <UserOutput user_name="Una" />
         <UserOutput user_name="Bojana" />
       </div>
     );
